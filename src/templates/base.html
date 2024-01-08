@@ -1,0 +1,35 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="keywords" content="django,escola" />
+    <meta name="description" content="projeto2-django" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Bootstrap CSS -->
+    <!-- <link rel="stylesheet" -->
+    <!-- href="{% static 'assets/bootstrap-5.2.3/dist/css/bootstrap.min.css' %}" /> -->
+    <!-- Font Awesome CSS -->
+    <!-- <script defer -->
+    <!--         src='{% static "assets/fontawesome-5.15.4/js/fontawesome.min.js" %}'></script> -->
+    <!-- <script defer src='{% static "assets/fontawesome-5.15.4/js/brands.min.js" %}'></script> -->
+    <!-- <script defer -->
+    <!--         src='{% static "assets/fontawesome-5.15.4/js/regular.min.js" %}'></script> -->
+    <!-- <script defer src='{% static "assets/fontawesome-5.15.4/js/solid.min.js" %}'></script> -->
+    <title>{% block title %}{% endblock %}</title>
+    {% block head %}{% endblock %}
+  </head>
+  <body class="bg-light">
+    <!-- <header></header> -->
+    <main>
+      <section>{% block content %}{% endblock %}</section>
+    </main>
+    <!-- <footer></footer> -->
+    <!-- Bootstrap JavaScript Bundle -->
+    <!-- <script src="{% static 'assets/bootstrap-5.2.3/dist/js/bootstrap.bundle.min.js' %}"></script> -->
+  </body>
+</html>

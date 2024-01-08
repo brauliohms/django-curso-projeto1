@@ -1,0 +1,29 @@
+{% extends 'base.html' %} 
+{% load static %}
+
+{% block title %}Escola - Alunos{% endblock %}
+
+{% block content %}
+<h1>Lista dos Alunos</h1>
+
+<h2>Projeto - 2</h2>
+<p>paragrafo</p>
+
+<h2>
+  {{ frutas }}
+</h2>
+
+{% for fruta in frutas %}
+
+<ul>
+  <li>
+    {% if fruta == "banana" %}
+    <b>{{ fruta }}</b>
+    {% else %}
+      {{ fruta }}
+    {% endif %}
+  </li>
+</ul>
+
+{% endfor %}
+{% endblock %}
