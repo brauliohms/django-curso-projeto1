@@ -4,5 +4,5 @@ from escola.views import alunosList, home
 
 urlpatterns = [
     path("", home),
-    path("aluno/", alunosList),
+    path("alunos/", alunosList),
 ]
