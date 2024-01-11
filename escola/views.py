@@ -1,4 +1,3 @@
-from django.http import HttpResponse
 from django.shortcuts import render
 
 
@@ -10,4 +9,4 @@ def home(request):
 
 
 def alunosList(request):
-    return HttpResponse("Cheguei em Aluno Listagem")
+    return render(request, "escola/lista.html")
