@@ -2,7 +2,16 @@
 {% load static %}
 {% block title %}Escola - Alunos{% endblock %}
 {% block content %}
-    <div class="text-center">
-        <h1>PROJETO 1- ESCOLA</h1>
+    <div>
+        <h1 class="text-center">PROJETO 1- ESCOLA</h1>
+        <ul>
+            {% for aluno in alunos %}
+                <li>
+                    Nome: {{ aluno.nome }} - E-mail: {{ aluno.email }} - Telefone: {{ aluno.telefone }} - Média Final: {{ aluno.mediafinal }}
+                    <a href="{% url 'alunosUpdate' aluno.pk %}">Editar Aluno</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'alunosNovo' %}">Adicionar Aluno</a>
     </div>
 {% endblock %}

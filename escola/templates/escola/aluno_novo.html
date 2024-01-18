@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Escola - Alunos{% endblock %}
+{% block content %}
+    <div>
+        <h1 class="text-center">PROJETO 1- ESCOLA</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ formAlunoNovo.as_p }}
+            <button type="submit">Criar</button>
+            {% if aluno %}
+                <a href="{% url 'alunosDelete' aluno.pk %}">Apagar Aluno</a>
+            {% endif %}
+        </form>
+    </div>
+{% endblock %}
