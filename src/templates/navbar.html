@@ -1,6 +1,7 @@
-<div class="topnav">
-  <a class="active" href="#">Home</a>
-  <a href="#">News</a>
-  <a href="#">Contact</a>
-  <a href="#">About</a>
+<div class="topnav" id="navbar">
+  <a class="active" id="home" name="/" href="{% url 'escola' %}">Home</a>
+  <a id="alunos" name="/alunos/" href="{% url 'alunosList' %}">Alunos</a>
+  <a id="disciplinas" name="/disciplinas/" href="{% url 'disciplinas' %}"
+    >Disciplinas</a
+  >
 </div>

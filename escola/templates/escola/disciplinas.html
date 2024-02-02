@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Escola - Disciplinas{% endblock %}
+{% block content %}
+    <h1 class="text-center">PROJETO 1- ESCOLA</h1>
+    <div>
+        <form action='' method='post'>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <!-- <p> -->
+            <!--     <label for='nome'>Nome:</label> -->
+            <!--     <input type='text' id="nome" name='nome'> -->
+            <!-- </p> -->
+            <!-- <p> -->
+            <!--     <label for="area">Area:</label> -->
+            <!--     <select id="area" name="area"> -->
+            <!--         <option value="BIO">Biológica</option> -->
+            <!--         <option value="EXA">Exatas</option> -->
+            <!--         <option value="HUM">Humanas</option> -->
+            <!--     </select> -->
+            <!-- </p> -->
+            <!-- <p> -->
+            <!--     <label for='carga_horaria'>Carga Horária:</label> -->
+            <!--     <input type='number' id="carga_horaria" name='carga_horaria'> -->
+            <!-- </p> -->
+            <button type='submit'>Enviar</button>
+        </form>
+    </div>
+    <div>
+        <h2 class="text-center">Disciplinas Cadastradas</h2>
+        <ul>
+            {% for disciplina in disciplinas %}
+                <li>{{ disciplina.nome }} - {{ disciplina.area }} - {{ disciplina.carga_horaria }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

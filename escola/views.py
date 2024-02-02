@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 
-from .forms import AlunoForm
-from .models import Aluno
+from .forms import AlunoForm, DisciplinasForm
+from .models import Aluno, Disciplina
 
 
 # Create your views here.
@@ -45,3 +45,35 @@ def alunosDelete(request, pk):
     aluno = Aluno.objects.get(pk=pk)
     aluno.delete()
     return redirect("alunosList")
+
+
+def disciplinas(request):
+    if request.method == "POST":
+        # print(request.POST)
+
+        form = DisciplinasForm(request.POST)
+        if form.is_valid():
+            nome = form.cleaned_data.get("nome")  # nome = request.POST["nome"]
+            area = form.cleaned_data.get("area")  # nome = request.POST["nome"]
+            carga_horaria = form.cleaned_data.get(
+                "carga_horaria"
+            )  # nome = request.POST["nome"]
+            # area = request.POST["area"]
+            # carga_horaria = request.POST["carga_horaria"]
+            # #
+            novaDisciplina = Disciplina(
+                nome=nome, area=area, carga_horaria=carga_horaria
+            )
+            #
+            # print(nome, area, carga_horaria)
+            novaDisciplina.save()
+            return redirect("disciplinas")
+
+    elif request.method == "GET":
+        disciplinas = Disciplina.objects.all().order_by("nome")
+        form = DisciplinasForm()
+
+    return render(
+        request, "escola/disciplinas.html", {
+            "disciplinas": disciplinas, "form": form}
+    )
