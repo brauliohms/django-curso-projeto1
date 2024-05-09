@@ -1,21 +1,44 @@
+# from django.core.mail import send_mail
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 
 from .forms import AlunoForm, DisciplinasForm
 from .models import Aluno, Disciplina
 
 
-# Create your views here.
+def teste(request):
+    print(request.user)
+    # assunto = "Teste de E-mail"
+    # send_mail(
+    #     assunto,
+    #     "Mensagem do meu email teste",
+    #     "webmaster@meusistema.com",
+    #     [
+    #         "aluno1@zmail.com",
+    #     ],
+    #     fail_silently=False,
+    # )
+    if request.user.is_authenticated:
+        print("Usuario esta autenticado")
+    else:
+        print("Usuario NÃO esta autenticado")
+
+    return render(request, "escola/teste.html")
+
+
 def home(request):
     data = {}
     data["frutas"] = ["banana", "morango", "pera", "maça"]
     return render(request, "escola/home.html", data)
 
 
+@login_required
 def alunosList(request):
     alunosListaRecebida = Aluno.objects.all()
     return render(request, "escola/lista.html", {"alunos": alunosListaRecebida})
 
 
+@login_required
 def alunosNovo(request):
     form = AlunoForm(request.POST or None)
 
@@ -26,6 +49,7 @@ def alunosNovo(request):
     return render(request, "escola/aluno_novo.html", {"formAlunoNovo": form})
 
 
+@login_required
 def alunosUpdate(request, id):
     aluno = Aluno.objects.get(pk=id)
 
@@ -36,17 +60,18 @@ def alunosUpdate(request, id):
         return redirect("alunosList")
 
     return render(
-        request, "escola/aluno_novo.html", {
-            "formAlunoNovo": form, "aluno": aluno}
+        request, "escola/aluno_novo.html", {"formAlunoNovo": form, "aluno": aluno}
     )
 
 
+@login_required
 def alunosDelete(request, pk):
     aluno = Aluno.objects.get(pk=pk)
     aluno.delete()
     return redirect("alunosList")
 
 
+@login_required
 def disciplinas(request):
     if request.method == "POST":
         # print(request.POST)
@@ -74,6 +99,5 @@ def disciplinas(request):
         form = DisciplinasForm()
 
     return render(
-        request, "escola/disciplinas.html", {
-            "disciplinas": disciplinas, "form": form}
+        request, "escola/disciplinas.html", {"disciplinas": disciplinas, "form": form}
     )

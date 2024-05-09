@@ -7,6 +7,7 @@ from escola.views import (
     alunosUpdate,
     disciplinas,
     home,
+    teste,
 )
 
 urlpatterns = [
@@ -16,4 +17,5 @@ urlpatterns = [
     path("alunos/<int:id>", alunosUpdate, name="alunosUpdate"),
     path("alunos/delete/<int:pk>", alunosDelete, name="alunosDelete"),
     path("disciplinas/", disciplinas, name="disciplinas"),
+    path("teste/", teste),
 ]

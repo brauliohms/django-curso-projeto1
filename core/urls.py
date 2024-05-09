@@ -8,4 +8,5 @@ urlpatterns = [
     path("teste/", helloworld),
     path("", home),
     path("escola/", include("escola.urls")),
+    path("accounts/", include("django.contrib.auth.urls")),
 ]
