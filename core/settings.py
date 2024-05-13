@@ -130,3 +130,7 @@ LOGIN_REDIRECT_URL = "escola"
 LOGOUT_REDIRECT_URL = "login"
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+
+# Classe do nosso Custom User
+# AUTH_USER_MODEL = "accounts.Usuario"
